@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Timeliner</title>
+  <link rel="apple-touch-icon" href="logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Timeliner">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hc-appbar">
+  <img src="logo.png" alt="">
+  <div class="wordmark">
+    <span class="hit">TIME</span>
+    <span class="cyc">LINER</span>
+  </div>
+  <div class="spacer"></div>
+  <div class="code" id="meta"></div>
+  <button class="close" id="btnTopClose" hidden title="Sluit spel">✕</button>
+</header>
+
+<main id="view"></main>
+
+<div class="rotate-hint">
+  <div class="icon">📱↻</div>
+  <div class="display msg">Draai je telefoon</div>
+  <div class="msg" style="text-transform:none;letter-spacing:0;font-family:var(--hc-body)">Voor de beste ervaring speel je Timeliner in landschapsmodus.</div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
