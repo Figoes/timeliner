@@ -1,8 +1,10 @@
-# Timeliner
+# Hitster Cycling v3
 
-Multiplayer wielergeschiedenis-spel: 2-6 spelers met elk een telefoon,
-één gedeeld spel. Plaats kaarten in de juiste chronologische volgorde op
-je eigen tijdlijn.
+Multiplayer Hitster: 2-6 spelers met elk een telefoon, één gedeeld spel.
+Geen QR-codes meer — alles in-app. Bij het aanmaken van een spel kiest de
+host een categorie: **Wielrennen** (113 kaarten), **Ajax 1995–2026** (57
+kaarten) of **Algemene kennis** (56 kaarten). Ajax en Algemene kennis
+groeien nog door naar 113 in een vervolgronde.
 
 ## Spelregels (kort)
 
@@ -46,11 +48,23 @@ Bestanden:
 |---|---|
 | `index.html` | Shell met topbar en `#view` container |
 | `style.css` | Brand tokens (pink/cyan/dark) + alle UI |
-| `cards.js` | De 113 kaarten als ES module export |
+| `cards.js` | Wielren-kaarten (113) als ES module export |
+| `cards-ajax.js` | Ajax 1995–2026-kaarten (57, groeit naar 113) |
+| `cards-algemeen.js` | Algemene-kennis-kaarten (56, groeit naar 113) |
+| `themes.js` | Koppelt de drie kaartenpotten + categorie-chipstijlen |
 | `app.js` | Game logica + Firebase wiring + render |
 | `firebase-config.js` | Jouw Firebase project credentials |
 | `database.rules.json` | RTDB security rules |
 | `logo.png` | Logo (topbar + face-down kaart + iOS home icon) |
+
+## Categorieën toevoegen
+
+Een nieuwe categorie is een los bestand met dezelfde vorm als `cards.js`
+(zelfde velden: `jaar`, `cat`, `renner`, `nat`, `race`, `kort`, `lang`,
+`diff` — de veldnamen zijn generiek, de inhoud hoeft niet over wielrennen
+te gaan). Exporteer het als `MOMENTEN_<NAAM>`, registreer het in
+`themes.js` onder `THEMES` en voeg eventuele nieuwe `cat`-waarden toe aan
+de `CATEGORY_STYLES`-lookup in datzelfde bestand.
 
 ## Firebase setup (eenmalig)
 
@@ -61,7 +75,7 @@ Bestanden:
    *Anonymous*.
 4. **Project settings** (tandwiel linksboven) → tab *General* → onderaan
    "Your apps" → klik `</>` om een Web app te registreren → geef hem een
-   naam (b.v. "timeliner") → registreer (geen Hosting nodig).
+   naam (b.v. "hitster-cycling") → registreer (geen Hosting nodig).
 5. Kopieer de getoonde `firebaseConfig` velden naar `firebase-config.js`:
    - `apiKey`, `authDomain`, `databaseURL`, `projectId`, `appId`.
    - **Belangrijk**: `databaseURL` is verplicht. Als hij niet in de
@@ -86,8 +100,9 @@ spelers te spelen.
 
 ## Deploy naar GitHub Pages
 
-Zet alle bestanden in de root van een repo, push, en zet Pages aan
-(*Settings → Pages → Deploy from branch → main /root*). Geen build step.
+Live op <https://figoes.github.io/timeliner/>. Zet alle bestanden in de
+root van een repo, push, en zet Pages aan (*Settings → Pages → Deploy
+from branch → main /root*). Geen build step.
 
 ## Veiligheid
 
