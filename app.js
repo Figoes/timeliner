@@ -1,4 +1,4 @@
-// Hitster Cycling v3 — multiplayer game logic + Firebase wiring.
+// Timeliner v3 — multiplayer game logic + Firebase wiring.
 // Firebase modular SDK loaded from gstatic CDN.
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
@@ -290,10 +290,10 @@ async function leaveSession() {
 async function shareInvite() {
   if (!state.code) return;
   const url = `${location.origin}${location.pathname}?code=${state.code}`;
-  const text = `Doe mee aan mijn Hitster Cycling spel! Code: ${state.code}`;
+  const text = `Doe mee aan mijn Timeliner spel! Code: ${state.code}`;
   if (navigator.share) {
     try {
-      await navigator.share({ title: "Hitster Cycling", text, url });
+      await navigator.share({ title: "Timeliner", text, url });
       return;
     } catch (e) {
       if (e?.name === "AbortError") return; // user cancelled
@@ -585,7 +585,7 @@ function renderHome() {
       <div class="left">
         <div class="logo-tile"></div>
         <div class="label">Multiplayer · 2–6 spelers</div>
-        <div class="title"><span class="h">HITSTER</span> <span class="c">CYCLING</span></div>
+        <div class="title"><span class="h">TIME</span><span class="c">LINER</span></div>
         <div class="sub">Iedereen op een eigen telefoon. Speel in landschapsmodus rondom de tafel.</div>
       </div>
       <div class="hc-card right">
