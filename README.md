@@ -1,6 +1,6 @@
-# Hitster Cycling v3
+# Timeliner v3
 
-Multiplayer Hitster: 2-6 spelers met elk een telefoon, één gedeeld spel.
+Multiplayer tijdlijnspel: 2-6 spelers met elk een telefoon, één gedeeld spel.
 Geen QR-codes meer — alles in-app. Bij het aanmaken van een spel kiest de
 host een categorie: **Wielrennen** (113 kaarten), **Ajax 1995–2026** (57
 kaarten) of **Algemene kennis** (56 kaarten). Ajax en Algemene kennis
@@ -75,7 +75,7 @@ de `CATEGORY_STYLES`-lookup in datzelfde bestand.
    *Anonymous*.
 4. **Project settings** (tandwiel linksboven) → tab *General* → onderaan
    "Your apps" → klik `</>` om een Web app te registreren → geef hem een
-   naam (b.v. "hitster-cycling") → registreer (geen Hosting nodig).
+   naam (b.v. "timeliner") → registreer (geen Hosting nodig).
 5. Kopieer de getoonde `firebaseConfig` velden naar `firebase-config.js`:
    - `apiKey`, `authDomain`, `databaseURL`, `projectId`, `appId`.
    - **Belangrijk**: `databaseURL` is verplicht. Als hij niet in de
