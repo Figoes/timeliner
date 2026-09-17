@@ -35,21 +35,21 @@ export const THEMES = Object.fromEntries(
 export const DEFAULT_THEME = "wielrennen";
 
 // Every "cat" value used across all themes maps to a chip icon + optional
-// hc-chip modifier class. Unknown categories fall back to a neutral chip.
+// tml-chip modifier class. Unknown categories fall back to a neutral chip.
 const CATEGORY_STYLES = {
   "Grote Ronde":         { icon: "🚴", cls: "" },
-  "Klassiek":            { icon: "◆",  cls: "hc-chip--classic" },
-  "Memorabel":           { icon: "⚡", cls: "hc-chip--memo" },
-  "Wereldkampioenschap": { icon: "🏆", cls: "hc-chip--epic" },
+  "Klassiek":            { icon: "◆",  cls: "tml-chip--classic" },
+  "Memorabel":           { icon: "⚡", cls: "tml-chip--memo" },
+  "Wereldkampioenschap": { icon: "🏆", cls: "tml-chip--epic" },
 
-  "Landstitel":          { icon: "🏆", cls: "hc-chip--epic" },
-  "Europa":              { icon: "⭐", cls: "hc-chip--classic" },
-  "Beker":               { icon: "🏅", cls: "hc-chip--memo" },
+  "Landstitel":          { icon: "🏆", cls: "tml-chip--epic" },
+  "Europa":              { icon: "⭐", cls: "tml-chip--classic" },
+  "Beker":               { icon: "🏅", cls: "tml-chip--memo" },
   "Icoon":               { icon: "⚡", cls: "" },
 
-  "Wetenschap":          { icon: "🔬", cls: "hc-chip--classic" },
-  "Geschiedenis":        { icon: "📜", cls: "hc-chip--epic" },
-  "Cultuur":             { icon: "🎭", cls: "hc-chip--memo" },
+  "Wetenschap":          { icon: "🔬", cls: "tml-chip--classic" },
+  "Geschiedenis":        { icon: "📜", cls: "tml-chip--epic" },
+  "Cultuur":             { icon: "🎭", cls: "tml-chip--memo" },
   "Sport":               { icon: "🏅", cls: "" },
 };
 

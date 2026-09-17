@@ -1,7 +1,7 @@
-# Timeliner v3
+# Timeliner
 
-Multiplayer tijdlijnspel: 2-6 spelers met elk een telefoon, één gedeeld spel.
-Geen QR-codes meer — alles in-app. Bij het aanmaken van een spel kiest de
+Multiplayer tijdlijnspel: 2-6 spelers met elk een telefoon, één gedeeld
+spel. Geen QR-codes, alles in-app. Bij het aanmaken van een spel kiest de
 host een categorie: **Wielrennen** (113 kaarten), **Ajax 1995–2026** (57
 kaarten) of **Algemene kennis** (56 kaarten). Ajax en Algemene kennis
 groeien nog door naar 113 in een vervolgronde.
@@ -47,7 +47,7 @@ Bestanden:
 | Bestand | Doel |
 |---|---|
 | `index.html` | Shell met topbar en `#view` container |
-| `style.css` | Brand tokens (pink/cyan/dark) + alle UI |
+| `style.css` | Brand tokens (pink/cyan/indigo) + alle UI |
 | `cards.js` | Wielren-kaarten (113) als ES module export |
 | `cards-ajax.js` | Ajax 1995–2026-kaarten (57, groeit naar 113) |
 | `cards-algemeen.js` | Algemene-kennis-kaarten (56, groeit naar 113) |
@@ -55,7 +55,8 @@ Bestanden:
 | `app.js` | Game logica + Firebase wiring + render |
 | `firebase-config.js` | Jouw Firebase project credentials |
 | `database.rules.json` | RTDB security rules |
-| `logo.png` | Logo (topbar + face-down kaart + iOS home icon) |
+| `logo.svg` | Logo (topbar + favicon) |
+| `logo.png` | Logo als bitmap (face-down kaart + iOS home icon) |
 
 ## Categorieën toevoegen
 
@@ -115,3 +116,9 @@ Dit beschermt **niet** tegen gebruikers die met de browser-console
 sjoemelen met hun eigen spel (b.v. score handmatig op 5 zetten). Voor een
 trust-based feestspel is dat acceptabel; voor competitief gebruik zou
 validatie server-side moeten (Firebase Functions of een ander backend).
+
+## Naamgeving
+
+De app heet Timeliner en draait op het Firebase-project `timeliner-fe5dc`
+(Realtime Database in europe-west1, anonieme login aan). De oude projectnaam
+komt nergens meer voor, ook niet in de netwerkverzoeken van de app.

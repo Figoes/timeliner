@@ -1,4 +1,4 @@
-// Timeliner v3 — multiplayer game logic + Firebase wiring.
+// Timeliner: multiplayer game logic + Firebase wiring.
 // Firebase modular SDK loaded from gstatic CDN.
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
@@ -101,7 +101,7 @@ function escapeHtml(s) {
 
 function chipClass(cat) {
   const cls = chipStyle(cat).cls;
-  return cls ? `hc-chip ${cls}` : "hc-chip";
+  return cls ? `tml-chip ${cls}` : "tml-chip";
 }
 
 function chipIcon(cat) {
@@ -571,14 +571,14 @@ function renderHome() {
   `;
 
   const fields = mode === "host"
-    ? `${themePicker}<button class="hc-btn hc-btn--primary" id="btnCreate" style="padding:13px;font-size:13px;width:100%">🚀 Start nieuw spel</button>`
+    ? `${themePicker}<button class="tml-btn tml-btn--primary" id="btnCreate" style="padding:13px;font-size:13px;width:100%">🚀 Start nieuw spel</button>`
     : `<div class="form-block">
          <div class="field-label">Spelcode</div>
          <input type="text" id="codeInput" placeholder="ABCD" class="code-input"
                 maxlength="${CODE_LENGTH}" autocapitalize="characters"
                 value="${escapeHtml(codeFromURL)}" />
        </div>
-       <button class="hc-btn hc-btn--outline-cyan" id="btnJoin" style="width:100%">Meedoen met code →</button>`;
+       <button class="tml-btn tml-btn--outline-cyan" id="btnJoin" style="width:100%">Meedoen met code →</button>`;
 
   return `
     <div class="home">
@@ -588,7 +588,7 @@ function renderHome() {
         <div class="title"><span class="h">TIME</span><span class="c">LINER</span></div>
         <div class="sub">Iedereen op een eigen telefoon. Speel in landschapsmodus rondom de tafel.</div>
       </div>
-      <div class="hc-card right">
+      <div class="tml-card right">
         <div class="segmented" role="tablist">
           <button class="${mode === "host" ? "on" : ""}" data-mode="host" role="tab">Nieuw spel</button>
           <button class="${mode === "join" ? "on" : ""}" data-mode="join" role="tab">Meedoen</button>
@@ -617,7 +617,7 @@ function renderLobby() {
     const accent = accentForPlayerIndex(i);
     return `
       <div class="player-row">
-        <div class="player-avatar" style="background:var(--hc-${accent})">${escapeHtml((p.name || "?")[0].toUpperCase())}</div>
+        <div class="player-avatar" style="background:var(--tml-${accent})">${escapeHtml((p.name || "?")[0].toUpperCase())}</div>
         <div class="player-info">
           <div class="name ${isMe ? "is-me" : isPlayerHost ? "is-host" : ""}">
             ${escapeHtml(p.name)}${isMe ? " (jij)" : ""}
@@ -630,9 +630,9 @@ function renderLobby() {
   }).join("");
 
   const startBtn = isHost
-    ? `<button class="hc-btn hc-btn--primary" id="btnStart" ${canStart ? "" : "disabled"}>Start spel</button>`
+    ? `<button class="tml-btn tml-btn--primary" id="btnStart" ${canStart ? "" : "disabled"}>Start spel</button>`
     : "";
-  const shareBtn = `<button class="hc-btn hc-btn--outline-cyan" id="btnShare">Deel link</button>`;
+  const shareBtn = `<button class="tml-btn tml-btn--outline-cyan" id="btnShare">Deel link</button>`;
   // "Verlaat lobby" is now the × in the topbar — no need to duplicate here.
   const leaveBtn = "";
   const hint = !canStart && isHost
@@ -665,7 +665,7 @@ function renderLobby() {
         <div class="actions">${startBtn}${shareBtn}${leaveBtn}</div>
         ${hint}
       </div>
-      <div class="hc-card lobby-right">
+      <div class="tml-card lobby-right">
         <div class="section-label">Spelers</div>
         ${playersHtml}
       </div>
@@ -690,7 +690,7 @@ function renderGame() {
     const isActive = pid === activeId;
     const isMe = pid === state.me.id;
     const cls = isMe ? "is-me" : isActive ? "is-active" : "";
-    return `<div class="hc-playertab ${cls}"><span>${escapeHtml(p.name)}</span><span class="score">${countCorrect(p)}/${scoreTarget()}</span></div>`;
+    return `<div class="tml-playertab ${cls}"><span>${escapeHtml(p.name)}</span><span class="score">${countCorrect(p)}/${scoreTarget()}</span></div>`;
   }).join("");
 
   const hasDraw = !!me.currentDraw;
@@ -729,8 +729,8 @@ function renderGame() {
     const card = cards[r.cardId] || {};
     const sideLabel = `${escapeHtml(me.name || "")} · ${countCorrect(me)} / ${scoreTarget()} kaarten`;
     leftHtml = `
-      <div class="hc-card ${r.correct ? "hc-card--yellow" : "hc-card--pink"} reveal-card ${r.correct ? "" : "bad"}">
-        <span class="hc-chip ${chipClass(card.cat).split(" ").slice(1).join(" ")}" style="align-self:flex-start">${chipIcon(card.cat)} ${escapeHtml(card.cat || "")}</span>
+      <div class="tml-card ${r.correct ? "tml-card--yellow" : "tml-card--pink"} reveal-card ${r.correct ? "" : "bad"}">
+        <span class="tml-chip ${chipClass(card.cat).split(" ").slice(1).join(" ")}" style="align-self:flex-start">${chipIcon(card.cat)} ${escapeHtml(card.cat || "")}</span>
         <div class="center">
           <div class="label-was">${r.correct ? "Het jaar was" : "Helaas — het was"}</div>
           <div class="year-big">${r.year}</div>
@@ -738,7 +738,7 @@ function renderGame() {
           <div class="nat-race">${escapeHtml(card.nat || "")} · ${escapeHtml(card.race || "")}</div>
         </div>
         <div class="footer">
-          <span class="hc-chip ${r.correct ? "hc-chip--green" : "hc-chip--red"}">${r.correct ? "✓ Correct geplaatst" : "✗ Niet correct"}</span>
+          <span class="tml-chip ${r.correct ? "tml-chip--green" : "tml-chip--red"}">${r.correct ? "✓ Correct geplaatst" : "✗ Niet correct"}</span>
         </div>
       </div>
     `;
@@ -752,7 +752,7 @@ function renderGame() {
     // ── CardDetail (hero card on left, timeline preview on right) ──
     const card = cards[me.currentDraw];
     leftHtml = `
-      <div class="hc-card hc-card--pink hero-card">
+      <div class="tml-card tml-card--pink hero-card">
         <div class="row-top">
           <span class="${chipClass(card.cat)}">${chipIcon(card.cat)} ${escapeHtml(card.cat)}</span>
           <span class="card-id">${escapeHtml(me.currentDraw)}</span>
@@ -767,11 +767,11 @@ function renderGame() {
         </div>
         <p class="blurb">${escapeHtml(card.lang)}</p>
         <div class="stats-row">
-          <span class="uc display" style="font-size:9px;color:var(--hc-text-dim)">Moeilijkheid${renderDiffDots(card.diff)}</span>
+          <span class="uc display" style="font-size:9px;color:var(--tml-text-dim)">Moeilijkheid${renderDiffDots(card.diff)}</span>
           <span class="uc display glow-pink" style="font-size:9px">+1 PUNT</span>
         </div>
         <div class="action-row">
-          <button class="hc-btn hc-btn--outline-pink" id="btnClose">← Sluit kaart</button>
+          <button class="tml-btn tml-btn--outline-pink" id="btnClose">← Sluit kaart</button>
         </div>
       </div>
     `;
@@ -803,7 +803,7 @@ function renderGame() {
           <div class="inner"></div>
         </div>
         ${tappable
-          ? `<button class="hc-btn hc-btn--primary" data-action="open" style="font-size:11px;padding:8px 14px">${helperLabel}</button>`
+          ? `<button class="tml-btn tml-btn--primary" data-action="open" style="font-size:11px;padding:8px 14px">${helperLabel}</button>`
           : `<div class="label" style="text-align:center">${helperLabel}</div>`}
       </div>
     `;
@@ -839,7 +839,7 @@ function renderDiffDots(diff) {
   const filled = Math.max(0, Math.min(total, diff || 0));
   let dots = `<span class="diff-dots">`;
   for (let i = 0; i < total; i++) {
-    dots += `<span class="hc-dot ${i < filled ? "hc-dot--on" : "hc-dot--off"}"></span>`;
+    dots += `<span class="tml-dot ${i < filled ? "tml-dot--on" : "tml-dot--off"}"></span>`;
   }
   dots += `</span>`;
   return dots;
@@ -892,11 +892,11 @@ function renderEnd() {
   const winner = ranking[0]?.p;
   const winnerName = (winner?.name || "").toUpperCase();
 
-  const RANK_COLORS = ["var(--hc-yellow)", "var(--hc-cyan)", "var(--hc-pink)", "var(--hc-text-dim)", "var(--hc-text-dim)", "var(--hc-text-dim)"];
+  const RANK_COLORS = ["var(--tml-yellow)", "var(--tml-cyan)", "var(--tml-pink)", "var(--tml-text-dim)", "var(--tml-text-dim)", "var(--tml-text-dim)"];
   const MEDALS = ["🏆", "🥈", "🥉", "•", "•", "•"];
 
   const rowsHtml = ranking.map(({ p }, i) => {
-    const color = RANK_COLORS[i] || "var(--hc-text-dim)";
+    const color = RANK_COLORS[i] || "var(--tml-text-dim)";
     return `
       <div class="lb-row rank-${i + 1}" style="--rank-color:${color}">
         <span class="lb-rank">${i + 1}</span>
@@ -915,10 +915,10 @@ function renderEnd() {
         <div class="winner-text">${escapeHtml(winnerName)}<br/>WINT!</div>
         <div class="stats">${winnerScore} kaarten correct geplaatst</div>
         <div class="actions">
-          <button class="hc-btn hc-btn--primary" id="btnLeave">Opnieuw spelen</button>
+          <button class="tml-btn tml-btn--primary" id="btnLeave">Opnieuw spelen</button>
         </div>
       </div>
-      <div class="hc-card end-leaderboard">${rowsHtml}</div>
+      <div class="tml-card end-leaderboard">${rowsHtml}</div>
     </div>
   `;
 }
