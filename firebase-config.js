@@ -3,9 +3,9 @@
 //   Project settings → General → Your apps → Web app → SDK setup and configuration → Config
 // `databaseURL` is required (Realtime Database, not Firestore).
 export const firebaseConfig = {
-  apiKey: "AIzaSyBmHNfhCCXCCE9onW-7fIh6yK8m2cNfgqE",
-   authDomain: "hitster-cycling.firebaseapp.com",
-  databaseURL: "https://hitster-cycling-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "hitster-cycling",
-  appId: "1:756663256738:web:b87e6660e7a6c59716b9fb"
+  apiKey: "AIzaSyCsPk7cPJYPY_YFAjkDR7diUCDIEgrtjL4",
+   authDomain: "timeliner-fe5dc.firebaseapp.com",
+  databaseURL: "https://timeliner-fe5dc-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "timeliner-fe5dc",
+  appId: "1:1079495105245:web:94d7a99fdf68bc6cfc5934"
 };
